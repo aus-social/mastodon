@@ -7,8 +7,8 @@ redis_connection = Redis.new(
 
 namespace = ENV.fetch('REDIS_NAMESPACE') { nil }
 
-if namespace
-  Redis.current = Redis::Namespace.new(namespace, redis: redis_connection)
+Redis.current = if namespace
+  Redis::Namespace.new(namespace, redis: redis_connection)
 else
-  Redis.current = redis_connection
-end
+  redis_connection
+                end
