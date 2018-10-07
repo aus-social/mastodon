@@ -63,7 +63,7 @@ describe AccountFilter do
       %i(local remote silenced alphabetic suspended).each do |option|
         it "delegates the #{option} option" do
           allow(Account).to receive(option).and_return(Account.none)
-          filter = described_class.new({ option => true })
+          filter = described_class.new(option => true)
           filter.results
 
           expect(Account).to have_received(option)
