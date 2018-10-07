@@ -14,14 +14,14 @@ class OStatus::Activity::Base
   def verb
     raw = @xml.at_xpath('./activity:verb', activity: OStatus::TagManager::AS_XMLNS).content
     OStatus::TagManager::VERBS.key(raw)
-  rescue
+  rescue StandardError
     :post
   end
 
   def type
     raw = @xml.at_xpath('./activity:object-type', activity: OStatus::TagManager::AS_XMLNS).content
     OStatus::TagManager::TYPES.key(raw)
-  rescue
+  rescue StandardError
     :activity
   end
 

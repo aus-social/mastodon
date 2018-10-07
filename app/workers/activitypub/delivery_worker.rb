@@ -19,7 +19,7 @@ class ActivityPub::DeliveryWorker
     perform_request
 
     failure_tracker.track_success!
-  rescue => e
+  rescue StandardError => e
     failure_tracker.track_failure!
     raise e.class, "Delivery failed for #{inbox_url}: #{e.message}", e.backtrace[0]
   end

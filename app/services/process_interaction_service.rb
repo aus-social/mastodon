@@ -61,7 +61,7 @@ class ProcessInteractionService < BaseService
   def verb(xml)
     raw = xml.at_xpath('//activity:verb', activity: OStatus::TagManager::AS_XMLNS).content
     OStatus::TagManager::VERBS.key(raw)
-  rescue
+  rescue StandardError
     :post
   end
 
