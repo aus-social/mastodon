@@ -28,7 +28,7 @@ class Pubsubhubbub::SubscribeWorker
     account = Account.find(account_id)
     logger.debug "PuSH re-subscribing to #{account.acct}"
     ::SubscribeService.new.call(account)
-  rescue => e
+  rescue StandardError => e
     raise e.class, "Subscribe failed for #{account&.acct}: #{e.message}", e.backtrace[0]
   end
 end

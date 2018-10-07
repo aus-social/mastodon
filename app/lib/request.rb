@@ -40,7 +40,7 @@ class Request
   def perform
     begin
       response = http_client.headers(headers).public_send(@verb, @url.to_s, @options)
-    rescue => e
+    rescue StandardError => e
       raise e.class, "#{e.message} on #{@url}", e.backtrace[0]
     end
 
@@ -145,7 +145,7 @@ class Request
           begin
             raise Mastodon::HostValidationError if PrivateAddressCheck.private_address? IPAddr.new(address.ip_address)
             return super address.ip_address, *args
-          rescue => e
+          rescue StandardError => e
             outer_e = e
           end
         end
