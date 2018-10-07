@@ -122,7 +122,7 @@ RSpec.describe Formatter do
     end
 
     context 'given a URL containing unsafe code (XSS attack, visible part)' do
-      let(:text) { %q{http://example.com/b<del>b</del>} }
+      let(:text) { %q(http://example.com/b<del>b</del>) }
 
       it 'escapes the HTML in the URL' do
         is_expected.to include '&lt;del&gt;b&lt;/del&gt;'
