@@ -35,7 +35,7 @@ describe JsonLdHelper do
         stub_request(:get, 'https://bob.test/').to_return body: '{"id": "https://alice.test/"}'
         stub_request(:get, 'https://alice.test/').to_return body: '{"id": "https://alice.test/"}'
 
-        expect(fetch_resource('https://bob.test/', false)).to eq({ 'id' => 'https://alice.test/' })
+        expect(fetch_resource('https://bob.test/', false)).to eq('id' => 'https://alice.test/')
       end
 
       it 'returns nil if the object identified by the given URI and the object identified by the retrieved ID does not match' do

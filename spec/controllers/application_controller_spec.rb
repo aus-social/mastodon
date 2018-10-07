@@ -94,7 +94,7 @@ describe ApplicationController, type: :controller do
 
   describe 'helper_method :current_theme' do
     it 'returns "default" when theme wasn\'t changed in admin settings' do
-      allow(Setting).to receive(:default_settings).and_return({ 'theme' => 'default' })
+      allow(Setting).to receive(:default_settings).and_return('theme' => 'default')
 
       expect(controller.view_context.current_theme).to eq 'default'
     end
