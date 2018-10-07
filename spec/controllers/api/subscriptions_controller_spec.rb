@@ -8,7 +8,7 @@ RSpec.describe Api::SubscriptionsController, type: :controller do
   describe 'GET #show' do
     context 'with valid subscription' do
       before do
-        get :show, params: { :id => account.id, 'hub.topic' => 'topic_url', 'hub.challenge' => '456', 'hub.lease_seconds' => "#{86400 * 30}" }
+        get :show, params: { :id => account.id, 'hub.topic' => 'topic_url', 'hub.challenge' => '456', 'hub.lease_seconds' => "#{86_400 * 30}" }
       end
 
       it 'returns http success' do
