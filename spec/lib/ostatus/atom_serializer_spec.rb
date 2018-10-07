@@ -357,8 +357,8 @@ RSpec.describe OStatus::AtomSerializer do
 
         mentioned_person = entry.nodes.find do |node|
           node.name == 'link' &&
-          node[:rel] == 'mentioned' &&
-          node['ostatus:object-type'] == OStatus::TagManager::TYPES[:collection]
+            node[:rel] == 'mentioned' &&
+            node['ostatus:object-type'] == OStatus::TagManager::TYPES[:collection]
         end
         expect(mentioned_person[:href]).to eq OStatus::TagManager::COLLECTIONS[:public]
       end
